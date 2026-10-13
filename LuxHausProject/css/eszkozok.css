@@ -25,6 +25,7 @@
 .eszkoz-kartya{
     height: 100%;
     transition: transform 0.2s, border-color 0.2s;
+    background-color: #000;
 }
 .eszkoz-kartya:hover{
     transform: translateY(-3px);

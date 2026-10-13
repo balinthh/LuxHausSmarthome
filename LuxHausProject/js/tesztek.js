@@ -1,10 +1,10 @@
-var tesztEszkoz = new Eszkoz("  Lámpa ", "60", true, "T-1", " Nappali ", "Okosizzó", "17:00", "23:00")
+var tesztEszkoz = new Eszkoz("  Lámpa ", "60", true, "T-1", " Nappali ", "Okos-izzó", "17:00", "23:00")
 console.assert(tesztEszkoz.getNev() == "Lámpa", "Eszkoz: a név trimmelve")
 console.assert(tesztEszkoz.getHelyiseg() == "Nappali", "Eszkoz: a helyiség trimmelve")
 console.assert(tesztEszkoz.getFogyasztas() === 60, "Eszkoz: a fogyasztás számmá alakul")
 console.assert(tesztEszkoz.getAktiv() === true, "Eszkoz: aktív igaz")
 console.assert(tesztEszkoz.getAzonosito() == "T-1", "Eszkoz: azonosító megmarad")
-console.assert(tesztEszkoz.getTipus() == "Okosizzó", "Eszkoz: típus megmarad")
+console.assert(tesztEszkoz.getTipus() == "Okos-izzó", "Eszkoz: típus megmarad")
 console.assert(tesztEszkoz.vanUtemezes() === true, "Eszkoz: van ütemezés")
 console.assert(new Eszkoz("A", 1, false, "T-2", "X", "Egyéb", "", "").vanUtemezes() === false, "Eszkoz: nincs ütemezés")
 console.assert(new Eszkoz("A", 1, false, "T-3", "X", "", "", "").getTipus() == "Egyéb", "Eszkoz: üres típus -> Egyéb")
@@ -23,9 +23,9 @@ tesztProfil.setJelszo("uj1234")
 console.assert(tesztProfil.jelszoHelyes("uj1234") === true, "Profil.setJelszo: módosítva")
 
 var minta = [
-    new Eszkoz("A", 60, true, "M-1", "Nappali", "Okosizzó", "", ""),
+    new Eszkoz("A", 60, true, "M-1", "Nappali", "Okos-izzó", "", ""),
     new Eszkoz("B", 25, false, "M-2", "Nappali", "Termosztát", "", ""),
-    new Eszkoz("C", 100, true, "M-3", "Konyha", "Okoskonnektor", "", "")
+    new Eszkoz("C", 100, true, "M-3", "Konyha", "Okos-konnektor", "", "")
 ]
 console.assert(osszFogyasztas(minta) == 160, "osszFogyasztas: csak a bekapcsoltak (160)")
 console.assert(osszFogyasztas([]) == 0, "osszFogyasztas: üres lista -> 0")
@@ -46,9 +46,9 @@ console.assert(hibaUzenet("Lámpa", "60", "") != "", "hibaUzenet: üres helyisé
 console.assert(hibaUzenet("Lámpa", "-5", "Nappali") != "", "hibaUzenet: negatív fogyasztás hiba")
 console.assert(hibaUzenet("Lámpa", "abc", "Nappali") != "", "hibaUzenet: nem szám fogyasztás hiba")
 console.assert(hibaUzenet("Lámpa", "", "Nappali") != "", "hibaUzenet: üres fogyasztás hiba")
-console.assert(hasznalat("Okoszár", 3) == 1, "hasznalat: zár mindig 1")
-console.assert(hasznalat("Okosizzó", 20) == 1, "hasznalat: izzó este 1")
-console.assert(hasznalat("Okosizzó", 12) == 0.05, "hasznalat: izzó délben 0.05")
+console.assert(hasznalat("Okos-zár", 3) == 1, "hasznalat: zár mindig 1")
+console.assert(hasznalat("Okos-izzó", 20) == 1, "hasznalat: izzó este 1")
+console.assert(hasznalat("Okos-izzó", 12) == 0.05, "hasznalat: izzó délben 0.05")
 var napi = napiAdatok(minta)
 console.assert(napi.cimkek.length == 24, "napiAdatok: 24 címke")
 console.assert(napi.cimkek[0] == "00:00", "napiAdatok: első címke 00:00")

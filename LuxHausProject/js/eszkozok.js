@@ -3,15 +3,15 @@ var szerkesztettAzonosito = null
 var nezet = "kartya"
 var grafikon = null
 
-var tipusok = ["Okosizzó", "Termosztát", "Biztonsági kamera", "Okoskonnektor", "Okoszár", "Mozgásérzékelő", "Okostévé", "Egyéb"]
+var tipusok = ["Okos-izzó", "Termosztát", "Biztonsági kamera", "Okos-konnektor", "Okos-zár", "Mozgásérzékelő", "Okostv", "Egyéb"]
 var ikonok = {
-    "Okosizzó": "bi-lightbulb",
+    "Okos-izzó": "bi-lightbulb",
     "Termosztát": "bi-thermometer-half",
     "Biztonsági kamera": "bi-camera-video",
-    "Okoskonnektor": "bi-plug",
-    "Okoszár": "bi-lock",
+    "Okos-konnektor": "bi-plug",
+    "Okos-zár": "bi-lock",
     "Mozgásérzékelő": "bi-broadcast",
-    "Okostévé": "bi-tv",
+    "Okostv": "bi-tv",
     "Egyéb": "bi-cpu"
 }
 var alapHelyisegek = ["Nappali", "Konyha", "Hálószoba", "Fürdőszoba", "Előszoba", "Kert", "Garázs", "Dolgozószoba"]
@@ -105,18 +105,18 @@ function eszkozKeres(azon) {
 }
 
 function hasznalat(tipus, ora) {
-    if (tipus == "Okosizzó") {
+    if (tipus == "Okos-izzó") {
         if (ora >= 6 && ora < 8) return 0.7
         if (ora >= 17) return 1
         if (ora < 1) return 0.4
         return 0.05
     }
-    if (tipus == "Okostévé") {
+    if (tipus == "Okostv") {
         if (ora >= 18) return 1
         if (ora >= 12 && ora < 14) return 0.4
         return 0.05
     }
-    if (tipus == "Okoskonnektor") {
+    if (tipus == "Okos-konnektor") {
         if (ora >= 6 && ora < 9) return 1
         if (ora >= 18 && ora < 20) return 0.8
         return 0.1
@@ -126,7 +126,7 @@ function hasznalat(tipus, ora) {
         if (ora >= 17 && ora < 23) return 0.9
         return 0.5
     }
-    if (tipus == "Biztonsági kamera" || tipus == "Okoszár" || tipus == "Mozgásérzékelő") {
+    if (tipus == "Biztonsági kamera" || tipus == "Okos-zár" || tipus == "Mozgásérzékelő") {
         return 1
     }
     return 0.5
@@ -261,7 +261,6 @@ function szures() {
     var helyiseg = document.querySelector(".helyiseg-szuro").value
     var allapot = document.querySelector(".allapot-szuro").value
     var szurt = szurtLista(eszkozok, szoveg, helyiseg, allapot)
-    document.querySelector(".talalat").innerHTML = szurt.length + " eszköz megjelenítve, szűrt fogyasztás: " + osszFogyasztas(szurt) + " W"
     kiir(szurt)
 }
 

@@ -84,7 +84,7 @@ h2{
 }
 
 .panel{
-    background-color: rgba(152, 153, 153, 0.103);
+    background-color: #000;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 25px;
     padding: 24px;
