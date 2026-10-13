@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/eszkozok.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>LuxHaus - Eszközkezelő</title>
+</head>
+
+<body>
+    <header class="mt-3">
+        <video class="background-video" autoplay muted loop playsinline>
+            <source src="img/stocktech.mp4" type="video/mp4">
+        </video>
+        <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 text-center text-lg-start">
+                    <a href="index.html"><img src="img/image.png" alt="LuxHaus Logo" title="Logo" class="w-50"></a>
+                </div>
+                <div class="col-lg-9">
+                        <ul class="d-flex mt-4 fs-5 justify-content-end">
+                            <li class="ms-5"><a href="eszkozok.html">Termékek</a></li>
+                            <li class="ms-5"><a href="kapcsolat.html">Kapcsolat</a></li>
+                            <li class="ms-5"><a href="profile.html" class="nav-profil"><i class="bi bi-person"></i></a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <main class="pt-5">
+        <section>
+            <div class="container">
+                <h3 class="text-white mb-1"><i class="bi bi-house-gear"></i> Eszközkezelő és Helyiség Menedzser</h3>
+                <p class="uzenet"></p>
+
+                <div class="row">
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="panel stat">
+                            <i class="bi bi-hdd-stack"></i>
+                            <div><div class="szam stat-osszes">0</div><small>Összes eszköz</small></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="panel stat">
+                            <i class="bi bi-lightning-charge"></i>
+                            <div><div class="szam stat-aktiv">0</div><small>Aktív (bekapcsolt)</small></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="panel stat">
+                            <i class="bi bi-speedometer2"></i>
+                            <div><div class="szam"><span class="stat-fogyasztas">0</span> <small>W</small></div><small>Pillanatnyi fogyasztás</small></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mb-3">
+                        <div class="panel stat">
+                            <i class="bi bi-diagram-3"></i>
+                            <div><div class="szam stat-helyisegek">0</div><small>Helyiségek</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fulek mt-3 mb-3">
+                    <button type="button" class="gomb aktiv" data-oldal="eszkozok" onclick="oldalValt('eszkozok')"><i class="bi bi-grid"></i> Eszközök</button>
+                    <button type="button" class="gomb" data-oldal="uj" onclick="oldalValt('uj')"><i class="bi bi-plus-circle"></i> Új eszköz</button>
+                    <button type="button" class="gomb" data-oldal="helyisegek" onclick="oldalValt('helyisegek')"><i class="bi bi-diagram-3"></i> Helyiségek</button>
+                    <button type="button" class="gomb" data-oldal="grafikon" onclick="oldalValt('grafikon')"><i class="bi bi-graph-up"></i> Grafikon</button>
+                </div>
+
+                <div class="oldal oldal-eszkozok">
+                    <div class="panel mb-4">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-md-5">
+                                <input type="text" class="form-control kereso" placeholder="Keresés név, típus vagy helyiség szerint..." onkeyup="szures()">
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <select class="form-select helyiseg-szuro" onchange="szures()"><option value="osszes">Minden helyiség</option></select>
+                            </div>
+                            <div class="col-6 col-md-2">
+                                <select class="form-select allapot-szuro" onchange="szures()">
+                                    <option value="osszes">Minden állapot</option>
+                                    <option value="be">Bekapcsolva</option>
+                                    <option value="ki">Kikapcsolva</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 text-md-end">
+                                <button type="button" class="kis-gomb nezet-kartya aktiv" onclick="nezetValt('kartya')" title="Kártyák"><i class="bi bi-grid-3x3-gap"></i></button>
+                                <button type="button" class="kis-gomb nezet-tabla" onclick="nezetValt('tabla')" title="Táblázat"><i class="bi bi-table"></i></button>
+                            </div>
+                        </div>
+                        <small class="d-block mt-2 talalat"></small>
+                    </div>
+                    <div class="row eszkozok"></div>
+                    <div class="panel tablazat d-none">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Eszköz</th><th>Azonosító</th><th>Típus</th><th>Helyiség</th><th class="text-end">Fogyasztás</th><th class="text-center">Ütemezés</th><th class="text-center">Be/Ki</th><th class="text-end">Műveletek</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="oldal oldal-uj d-none">
+                    <div class="panel urlap" style="max-width: 700px">
+                        <h4 class="urlap-cim mb-4"><i class="bi bi-plus-circle"></i> Új eszköz hozzáadása</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Eszköz neve</label>
+                                <input type="text" class="form-control nev" placeholder="pl. Nappali főlámpa">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Típus</label>
+                                <select class="form-select tipus"></select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Helyiség</label>
+                                <input type="text" class="form-control helyiseg" list="helyisegLista" placeholder="pl. Nappali">
+                                <datalist id="helyisegLista"></datalist>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Fogyasztás (Watt)</label>
+                                <input type="number" class="form-control fogyasztas" min="0" placeholder="pl. 60">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input aktiv" type="checkbox" id="aktivKapcsolo">
+                                    <label class="form-check-label" for="aktivKapcsolo">Bekapcsolva</label>
+                                </div>
+                            </div>
+                            <div class="col-12"><small><i class="bi bi-clock-history"></i> Ütemezés (opcionális) – a megadott időpontban automatikusan be-/kikapcsol</small></div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Bekapcsolás</label>
+                                <input type="time" class="form-control beIdo">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Kikapcsolás</label>
+                                <input type="time" class="form-control kiIdo">
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 mt-2">
+                            <button type="button" class="gomb mentes-gomb" onclick="mentes()">Hozzáadás</button>
+                            <button type="button" class="gomb megse-gomb d-none" onclick="megse()">Mégse</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="oldal oldal-helyisegek d-none">
+                    <div class="row helyisegek"></div>
+                </div>
+
+                <div class="oldal oldal-grafikon d-none">
+                    <div class="panel">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                            <div>
+                                <h4 class="mb-1"><i class="bi bi-graph-up"></i> Napi áramfogyasztás helyiségenként</h4>
+                                <small>Becsült 24 órás fogyasztási görbe (W) az eszköztípusok tipikus napi használata alapján.</small>
+                            </div>
+                            <span class="cimke">Napi csúcs: <strong class="csucs text-white">0 W</strong></span>
+                        </div>
+                        <div class="grafikon-doboz">
+                            <canvas id="grafikon"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container text-center">LuxHaus SmartHome &middot; az adatok a böngésződben (localStorage) tárolódnak</div>
+    </footer>
+</body>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="js/profil.js"></script>
+<script src="js/eszkoz.js"></script>
+<script src="js/tarolo.js"></script>
+<script src="js/script.js"></script>
+<script src="js/eszkozok.js"></script>
+<script src="js/tesztek.js"></script>
+
+</html>

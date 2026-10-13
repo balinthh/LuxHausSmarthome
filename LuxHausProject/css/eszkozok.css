@@ -1,0 +1,113 @@
+.stat{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.stat i{
+    font-size: 32px;
+    color: #fff;
+}
+.stat .szam{
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+.stat small{
+    color: #999;
+}
+
+.fulek button{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.eszkoz-kartya{
+    height: 100%;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.eszkoz-kartya:hover{
+    transform: translateY(-3px);
+}
+.eszkoz-kartya.bekapcsolt{
+    border-color: rgba(94, 234, 212, 0.5);
+}
+.eszkoz-kartya h5{
+    font-size: 18px;
+}
+.eszkoz-kartya small{
+    color: #999;
+}
+.ikon{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.allapot{
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 4px 14px;
+}
+.allapot.be{
+    background-color: #5eead4;
+    color: #000;
+}
+.allapot.ki{
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #c5c5c5;
+}
+
+.cimke{
+    display: inline-block;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    padding: 3px 12px;
+    color: #c5c5c5;
+}
+.watt{
+    font-weight: 700;
+    color: #fff;
+}
+
+.kis-gomb{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+.kis-gomb:hover{
+    background-color: #777777;
+}
+.kis-gomb.torol:hover{
+    background-color: #ff7b7b;
+    color: #000;
+}
+
+.table{
+    --bs-table-bg: transparent;
+    --bs-table-color: #c5c5c5;
+    --bs-table-border-color: rgba(255, 255, 255, 0.12);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+    --bs-table-hover-color: #fff;
+}
+.table th{
+    color: #fff;
+    font-weight: 500;
+}
+
+.grafikon-doboz{
+    position: relative;
+    height: 380px;
+}

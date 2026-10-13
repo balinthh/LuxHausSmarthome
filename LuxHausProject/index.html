@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div id="root" style="display:none"></div>
     <header class="mt-3">
         <video class="background-video" autoplay muted loop playsinline>
             <source src="img/stocktech.mp4" type="video/mp4">
@@ -18,14 +19,14 @@
         <nav>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <a href="index.html"><img src="img/logo.png" alt="LuxHaus Loog" title="Logo" class="w-50"></a>
+                <div class="col-lg-3 text-center text-lg-start">
+                    <a href="index.html"><img src="img/image.png" alt="LuxHaus Logo" title="Logo" class="w-50"></a>
                 </div>
                 <div class="col-lg-9">
                         <ul class="d-flex mt-4 fs-5 justify-content-end">
-                            <li class="ms-5"><a href="termekek.html">Termékek</a></li>
+                            <li class="ms-5"><a href="eszkozok.html">Termékek</a></li>
                             <li class="ms-5"><a href="kapcsolat.html">Kapcsolat</a></li>
-                            <li class="ms-5"><a href="profile.html"><i class="bi bi-person"></i></a></li>
+                            <li class="ms-5"><a href="profile.html" class="nav-profil"><i class="bi bi-person"></i></a></li>
                         </ul>
                 </div>
             </div>
@@ -36,16 +37,49 @@
                 <h1 class="text-center">LuxHaus</h1>
                 <h2 class="text-center mt-4 text-white">Az okosotthonok következő generációja.</h2>
                 <p class="text-center mt-4">Évekkel a versenytársak előtt. A legmodernebb technológiával felszerelve. <br> Az vadonatúj LuxHaus a világ egyik legfejlettebb okosotthon-központja.</p>
-                <p class="text-center mt-5"><a href="profile.html"><button type="button">Regisztrálj</button></a></p>
+                <p class="text-center mt-5"><a href="profile.html"><button type="button">Regisztrálj</button></a> <a href="eszkozok.html"><button type="button">Eszközkezelő</button></a></p>
             </div>
         </section>
     </header>
     <main class="pt-5 mt-5">
-        
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="panel text-center funkcio h-100">
+                            <i class="bi bi-hdd-stack"></i>
+                            <h4 class="mt-3">Eszközkezelés</h4>
+                            <p>Vedd fel, szerkeszd, kapcsold be vagy ki az okoseszközeidet, és állíts be napi ütemezést.</p>
+                            <a href="eszkozok.html">Tovább <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="panel text-center funkcio h-100">
+                            <i class="bi bi-diagram-3"></i>
+                            <h4 class="mt-3">Helyiségek</h4>
+                            <p>Lásd helyiségenként, hány eszköz aktív és mennyi áramot fogyasztanak éppen.</p>
+                            <a href="eszkozok.html?oldal=helyisegek">Tovább <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="panel text-center funkcio h-100">
+                            <i class="bi bi-graph-up"></i>
+                            <h4 class="mt-3">Fogyasztás grafikon</h4>
+                            <p>Napi, helyiségenkénti fogyasztási görbe, hogy lásd, mikor csúcsosodik a felhasználás.</p>
+                            <a href="eszkozok.html?oldal=grafikon">Tovább <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer></footer>
+    <footer>
+        <div class="container text-center">LuxHaus SmartHome &middot; az adatok a böngésződben (localStorage) tárolódnak</div>
+    </footer>
 </body>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/profil.js"></script>
+<script src="js/eszkoz.js"></script>
+<script src="js/tarolo.js"></script>
 <script src="js/script.js"></script>
-
 </html>
